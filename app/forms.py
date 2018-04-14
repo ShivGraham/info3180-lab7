@@ -5,4 +5,4 @@ from wtforms.validators import InputRequired
 
 class UploadForm(FlaskForm):
     photo = FileField('Photo', validators=[FileRequired(), FileAllowed(['jpeg', 'jpg', 'png'])])
-    description = TextAreaField('Name', validators=[InputRequired()])
+    description = TextAreaField('Description', validators=[InputRequired()])

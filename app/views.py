@@ -7,7 +7,7 @@ This file creates your application.
 
 import os
 from app import app
-from flask import render_template, request
+from flask import Flask, render_template, request, url_for, flash
 from flask import jsonify
 from werkzeug.utils import secure_filename
 
