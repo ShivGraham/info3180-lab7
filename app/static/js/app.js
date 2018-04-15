@@ -42,6 +42,15 @@ const UForm = Vue.component('upload-form', {
         <body>
             <h1>Upload Form</h1>
             
+            <div v-if="messages.errors" v-for="m in messages" class="alert alert-danger">
+                <li v-for="error in m">    
+                    {{ error }}
+                </li>
+            </div>
+            <div v-if="messages.info" v-for="info in messages" class="alert alert-success">
+                {{ info.message }}
+            </div>
+            
             <form @submit.prevent="uploadPhoto" id="uploadForm">
                 <div>
                     <label for="desc">Description</label>
@@ -49,7 +58,7 @@ const UForm = Vue.component('upload-form', {
                 </div>
                 <div>
                     <label for="photo">Photo Upload</label>
-                    <input type="file" id="photo" name="photo" />
+                    <div> <input type="file" id="photo" name="photo" /> </div>
                 </div>
                 
                 <button type="submit" class="btn btn-primary" id="uBtn">Submit</button>
@@ -61,6 +70,7 @@ const UForm = Vue.component('upload-form', {
         uploadPhoto: function() {
             let uploadForm = document.getElementById('uploadForm');
             let form_data = new FormData(uploadForm);
+            let self = this;
             
             fetch("/api/upload", {
                 method: 'POST',
@@ -76,10 +86,17 @@ const UForm = Vue.component('upload-form', {
                 .then(function (jsonResponse) {
                     //displays a success message
                     console.log(jsonResponse);
+                    
+                    self.messages = jsonResponse;
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
+        }
+    },
+    data: function() {
+        return {
+            messages: ''
         }
     }
 });

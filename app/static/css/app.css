@@ -2,17 +2,26 @@ body {
     padding-top: 5rem;
 }
 
-label, #uBtn {
-    margin-top: 10px;
-}
-
 label {
     font-weight: 500;
+    margin-top: 20px;
     margin-bottom: 5px;
 }
 
-#desc {
+div, textarea {
     margin-top: 10px;
+}
+
+#desc {
     width: 100%;
     height: 50px;
+}
+
+#uBtn {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#photoBtn {
+    height: 30px;
 }

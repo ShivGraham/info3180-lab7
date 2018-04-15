@@ -34,7 +34,7 @@ def upload():
         filename = secure_filename(photo_file.filename)
         photo_file.save(os.path.join(uFolder, filename))
         
-        info = [{'message': 'File Upload Successful', 'filename': filename, 'description': request.form['description']}]
+        info = {'message': 'File Upload Successful', 'filename': filename, 'description': request.form['description']}
         
         return jsonify(info=info)
     else:
